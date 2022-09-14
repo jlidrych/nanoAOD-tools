@@ -93,15 +93,6 @@ class btagSFProducer(Module):
                     },
                     'supported_wp': ["L", "M", "T", "shape_corr"]
                 },
-                'UL2017': {
-                    'inputFileName': "DeepCSV_106XUL17SF.csv",
-                    'measurement_types': {
-                        0: "comb",  # b
-                        1: "comb",  # c
-                        2: "incl"   # light
-                    },
-                    'supported_wp': ["L", "M", "T", "shape_corr"]
-                },
                 '2018': {
                     'inputFileName': "DeepCSV_102XSF_V1.csv",
                     'measurement_types': {
@@ -110,20 +101,11 @@ class btagSFProducer(Module):
                         2: "incl"   # light
                     },
                     'supported_wp': ["L", "M", "T", "shape_corr"]
-                },
-                'UL2018': {
-                    'inputFileName': "DeepCSV_106XUL18SF.csv",
-                    'measurement_types': {
-                        0: "comb",  # b
-                        1: "comb",  # c
-                        2: "incl"   # light
-                    },
-                    'supported_wp': ["L", "M", "T", "shape_corr"]
-                },
+                }
             },
             'deepjet': {
                 'Legacy2016': {
-                    'inputFileName': "DeepJet_2016LegacySF_V1.csv",
+                    'inputFileName': "DeepJet_2016LegacySF_V1_JESreduced.csv",#DeepJet_2016LegacySF_V1.csv",
                     'measurement_types': {
                         0: "comb",  # b
                         1: "comb",  # c
@@ -132,16 +114,7 @@ class btagSFProducer(Module):
                     'supported_wp': ["L", "M", "T", "shape_corr"]
                 },
                 '2017': {
-                    'inputFileName': "DeepFlavour_94XSF_V3_B_F.csv",
-                    'measurement_types': {
-                        0: "comb",  # b
-                        1: "comb",  # c
-                        2: "incl"   # light
-                    },
-                    'supported_wp': ["L", "M", "T", "shape_corr"]
-                },
-                'UL2017': {
-                    'inputFileName': "DeepJet_106XUL17SF.csv",
+                    'inputFileName': "DeepFlavour_94XSF_V4_B_F_JESreduced.csv",#DeepFlavour_94XSF_V3_B_F.csv",
                     'measurement_types': {
                         0: "comb",  # b
                         1: "comb",  # c
@@ -150,23 +123,14 @@ class btagSFProducer(Module):
                     'supported_wp': ["L", "M", "T", "shape_corr"]
                 },
                 '2018': {
-                    'inputFileName': "DeepJet_102XSF_V1.csv",
+                    'inputFileName': "DeepJet_102XSF_V2_JESreduced.csv",#DeepJet_102XSF_V1.csv",
                     'measurement_types': {
                         0: "comb",  # b
                         1: "comb",  # c
                         2: "incl"   # light
                     },
                     'supported_wp': ["L", "M", "T", "shape_corr"]
-                },
-                'UL2018': {
-                    'inputFileName': "DeepJet_106XUL18SF.csv",
-                    'measurement_types': {
-                        0: "comb",  # b
-                        1: "comb",  # c
-                        2: "incl"   # light
-                    },
-                    'supported_wp': ["L", "M", "T", "shape_corr"]
-                },
+                }
             },
             'cmva': {
                 '2016': {
@@ -382,3 +346,4 @@ class btagSFProducer(Module):
 
 btagSF2016 = lambda: btagSFProducer("2016")
 btagSF2017 = lambda: btagSFProducer("2017")
+btagSF2018 = lambda: btagSFProducer("2018")

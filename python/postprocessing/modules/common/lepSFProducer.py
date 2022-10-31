@@ -74,6 +74,15 @@ class lepSFProducer(Module):
             el_f = ["2018_El_MVA90.root",
                     "2018_El_egammaEffi.txt_EGM2D_updatedAll.root"]
             el_h = ["EGamma_SF2D", "EGamma_SF2D"]
+        elif electronSelectionTag=="miniISO_2016":
+            el_f = ["egamma-custom-2016.root"]
+            el_h = ["EGamma_SF2D"]
+        elif electronSelectionTag=="miniISO_2017":
+            el_f = ["2egamma-custom-2017.root"]
+            el_h = ["EGamma_SF2D"]
+        elif electronSelectionTag=="miniISO_2018":
+            el_f = ["egamma-custom-2018.root"]
+            el_h = ["EGamma_SF2D"]
 
         mu_f = ["%s/src/PhysicsTools/NanoAODTools/python/postprocessing/data/leptonSF/" % os.environ['CMSSW_BASE'] + f for f in mu_f]
         el_f = ["%s/src/PhysicsTools/NanoAODTools/python/postprocessing/data/leptonSF/" % os.environ['CMSSW_BASE'] + f for f in el_f]
@@ -131,7 +140,7 @@ class lepSFProducer(Module):
 
 # define modules using the syntax 'name = lambda : constructor' to avoid having them loaded when not needed
 
-lepSF_2016 = lambda : lepSFProducer( "MediumWP_2016", "GPMVA90_2016")
-lepSF_2017 = lambda : lepSFProducer( "MediumWP_2017", "GPMVA90_2017")
-lepSF_2018_runA = lambda : lepSFProducer( "MediumWP_2018_runA", "GPMVA90_2018")
-lepSF_2018 = lambda : lepSFProducer( "MediumWP_2018", "GPMVA90_2018")
+lepSF_2016 = lambda : lepSFProducer( "MediumWP_2016", "miniISO_2016")
+lepSF_2017 = lambda : lepSFProducer( "MediumWP_2017", "miniISO_2017")
+lepSF_2018_runA = lambda : lepSFProducer( "MediumWP_2018_runA", "miniISO_2018")
+lepSF_2018 = lambda : lepSFProducer( "MediumWP_2018", "miniISO_2018")

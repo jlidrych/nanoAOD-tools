@@ -62,8 +62,8 @@ void LeptonEfficiencyCorrector::setLeptons(int nLep, int *lepPdgId, float *lepPt
 
 float LeptonEfficiencyCorrector::getSF(int pdgid, float pt, float eta) {
   float out=1.;
-  float x = abs(pdgid)==13 ? pt : eta;
-  float y = abs(pdgid)==13 ? fabs(eta) : pt;
+  float x = abs(pdgid)==13 ? fabs(eta) : eta;
+  float y =  pt ;
   for(std::vector<TH2F*>::iterator hist=effmaps_.begin(); hist<effmaps_.end(); ++hist) {
     WeightCalculatorFromHistogram wc(*hist);
     out *= wc.getWeight(x,y);
@@ -73,8 +73,8 @@ float LeptonEfficiencyCorrector::getSF(int pdgid, float pt, float eta) {
 
 float LeptonEfficiencyCorrector::getSFErr(int pdgid, float pt, float eta) {
   float out=1.;
-  float x = pt;
-  float y = abs(pdgid)==13 ? fabs(eta) : eta;
+  float x = abs(pdgid)==13 ? fabs(eta) : eta;
+  float y =  pt ;
   for(std::vector<TH2F*>::iterator hist=effmaps_.begin(); hist<effmaps_.end(); ++hist) {
     WeightCalculatorFromHistogram wc(*hist);
     out *= wc.getWeightErr(x,y);

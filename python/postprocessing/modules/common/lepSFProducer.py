@@ -41,26 +41,26 @@ class lepSFProducer(Module):
                     "NUM_LooseRelIso_DEN_LooseID_pt_abseta"]
         elif muonSelectionTag=="MediumWP_2016":
             mu_f=["2016_Mu_ID.root",
-                  "2016_Mu_Iso.root"]
-            mu_h = ["MC_NUM_MediumID_DEN_genTracks_PAR_pt_eta/pt_abseta_ratio",
-                    "LooseISO_MediumID_pt_eta/pt_abseta_ratio"]
+                  "NUM_LooseMiniISO_DEN_MediumID_abseta_pt_Run2016.root"]
+            mu_h = ["MC_NUM_MediumID_DEN_genTracks_PAR_pt_eta/abseta_pt_ratio",
+                    "NUM_LooseMiniISO_DEN_MediumID_abseta_pt"]
         elif muonSelectionTag=="MediumWP_2017":
-            mu_f=["2017_Mu_RunBCDEF_mc_ID.root",
-                  "2017_Mu_RunBCDEF_mc_ISO.root"]
-            mu_h = ["NUM_MediumID_DEN_genTracks_pt_abseta",
-                    "NUM_LooseRelIso_DEN_MediumID_pt_abseta"]
+            mu_f=["RunBCDEF_SF_ID_syst_abseta_pt.root",
+                  "NUM_LooseMiniISO_DEN_MediumID_abseta_pt_Run2017.root"]
+            mu_h = ["NUM_MediumID_DEN_genTracks_abseta_pt",
+                    "NUM_LooseMiniISO_DEN_MediumID_abseta_pt"]
         elif muonSelectionTag=="MediumWP_2018":
-            mu_f=["2018_Mu_EfficienciesStudies_2018_rootfiles_RunABCD_SF_ID.root",
-                  "2018_Mu_EfficienciesStudies_2018_rootfiles_RunABCD_SF_ISO.root"]
-            mu_h = ["NUM_MediumID_DEN_TrackerMuons_pt_abseta",
-                    "NUM_LooseRelIso_DEN_MediumID_pt_abseta"]
+            mu_f=["RunABCD_SF_ID_abseta_pt.root",
+                  "NUM_LooseMiniISO_DEN_MediumID_abseta_pt_Run2018.root"]
+            mu_h = ["NUM_MediumID_DEN_TrackerMuons_abseta_pt",
+                    "NUM_LooseMiniISO_DEN_MediumID_abseta_pt"]
         elif muonSelectionTag=="MediumWP_2018_runA":
             self.runA = True
             mu_f=["2018_Mu_EfficienciesStudies_2018_rootfiles_RunABCD_SF_ID.root",
-                  "2018_Mu_EfficienciesStudies_2018_rootfiles_RunABCD_SF_ISO.root"]
-            mu_h = ["IsoMu24_PtEtaBins/pt_abseta_ratio",
-                    "NUM_MediumID_DEN_TrackerMuons_pt_abseta",
-                    "NUM_LooseRelIso_DEN_MediumID_pt_abseta"]
+                  "NUM_LooseMiniISO_DEN_MediumID_abseta_pt_Run2018.root"]
+            mu_h = [
+                    "NUM_MediumID_DEN_TrackerMuons_abseta_pt",
+                    "NUM_LooseMiniISO_DEN_MediumID_abseta_pt"]
         if electronSelectionTag=="GPMVA90_2016":
             el_f = ["2016_El_EGM2D_eleGSF.root",
                     "2016_El_EGM2D_eleMVA90.root"]
@@ -74,6 +74,15 @@ class lepSFProducer(Module):
             el_f = ["2018_El_MVA90.root",
                     "2018_El_egammaEffi.txt_EGM2D_updatedAll.root"]
             el_h = ["EGamma_SF2D", "EGamma_SF2D"]
+        elif electronSelectionTag=="miniISO_2016":
+            el_f = ["egamma-custom-2016.root"]
+            el_h = ["EGamma_SF2D"]
+        elif electronSelectionTag=="miniISO_2017":
+            el_f = ["2egamma-custom-2017.root"]
+            el_h = ["EGamma_SF2D"]
+        elif electronSelectionTag=="miniISO_2018":
+            el_f = ["egamma-custom-2018.root"]
+            el_h = ["EGamma_SF2D"]
 
         mu_f = ["%s/src/PhysicsTools/NanoAODTools/python/postprocessing/data/leptonSF/" % os.environ['CMSSW_BASE'] + f for f in mu_f]
         el_f = ["%s/src/PhysicsTools/NanoAODTools/python/postprocessing/data/leptonSF/" % os.environ['CMSSW_BASE'] + f for f in el_f]
@@ -131,7 +140,7 @@ class lepSFProducer(Module):
 
 # define modules using the syntax 'name = lambda : constructor' to avoid having them loaded when not needed
 
-lepSF_2016 = lambda : lepSFProducer( "MediumWP_2016", "GPMVA90_2016")
-lepSF_2017 = lambda : lepSFProducer( "MediumWP_2017", "GPMVA90_2017")
-lepSF_2018_runA = lambda : lepSFProducer( "MediumWP_2018_runA", "GPMVA90_2018")
-lepSF_2018 = lambda : lepSFProducer( "MediumWP_2018", "GPMVA90_2018")
+lepSF_2016 = lambda : lepSFProducer( "MediumWP_2016", "miniISO_2016")
+lepSF_2017 = lambda : lepSFProducer( "MediumWP_2017", "miniISO_2017")
+lepSF_2018_runA = lambda : lepSFProducer( "MediumWP_2018_runA", "miniISO_2018")
+lepSF_2018 = lambda : lepSFProducer( "MediumWP_2018", "miniISO_2018")
